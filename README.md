@@ -1,4 +1,9 @@
 # Dayflow – Human Resource Management System (HRMS)
+## ⚠️ Important Note
+
+The final runnable version of this project is available in the **`main` branch**.
+Please switch to the `main` branch to run the complete application.
+
 
 **Every workday, perfectly aligned.**
 
