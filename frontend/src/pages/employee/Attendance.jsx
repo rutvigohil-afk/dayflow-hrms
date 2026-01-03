@@ -3,7 +3,7 @@ import API from "../../services/api";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 
-const Attendance = () => {
+const EmployeeAttendance = () => {
     const [records, setRecords] = useState([]);
     
     useEffect(() => {
@@ -56,4 +56,4 @@ const Attendance = () => {
   );
 };
 
-export default Attendance;
+export default EmployeeAttendance;

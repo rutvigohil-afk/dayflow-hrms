@@ -1,18 +1,36 @@
+import { NavLink } from "react-router-dom";
+
 const Sidebar = ({ role }) => {
   return (
-    <div className="w-60 bg-gray-100 min-h-screen p-5">
-      <ul className="space-y-4 font-medium">
-        <li className="hover:text-blue-600 cursor-pointer">Dashboard</li>
-        <li className="hover:text-blue-600 cursor-pointer">Attendance</li>
-        <li className="hover:text-blue-600 cursor-pointer">Leave</li>
-        <li className="hover:text-blue-600 cursor-pointer">Payroll</li>
+    <div className="w-64 bg-gray-100 min-h-screen p-6">
+      <nav className="flex flex-col gap-4 text-lg">
+        
+        {role === "Employee" && (
+          <>
+            <NavLink
+              to="/employee/dashboard"
+              className={({ isActive }) =>
+                isActive ? "font-bold text-blue-600" : ""
+              }
+            >
+              Dashboard
+            </NavLink>
+
+            <NavLink to="/employee/attendance">Attendance</NavLink>
+            <NavLink to="/employee/leave">Leave</NavLink>
+            <NavLink to="/employee/payroll">Payroll</NavLink>
+          </>
+        )}
 
         {role === "Admin" && (
-          <li className="hover:text-blue-600 cursor-pointer">
-            Leave Approvals
-          </li>
+          <>
+            <NavLink to="/admin/dashboard">Dashboard</NavLink>
+            <NavLink to="/admin/employees">Employees</NavLink>
+            <NavLink to="/admin/attendance">Attendance</NavLink>
+            <NavLink to="/admin/leave">Leave Approval</NavLink>
+          </>
         )}
-      </ul>
+      </nav>
     </div>
   );
 };

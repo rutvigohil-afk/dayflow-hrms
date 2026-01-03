@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import API from "../../services/api";
 
-const Payroll = () => {
+const EmployeePayroll = () => {
   const [payroll, setPayroll] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -67,4 +67,4 @@ const Payroll = () => {
   );
 };
 
-export default Payroll;
+export default EmployeePayroll;

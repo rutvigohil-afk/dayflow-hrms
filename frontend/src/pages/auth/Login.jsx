@@ -1,25 +1,38 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import API from "../../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await API.post("/auth/login", {
-      email,
-      password,
-    });
+    setErrorMsg(""); // clear previous errors
 
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("role", res.data.role);
+    try {
+      const res = await API.post("/auth/login", {
+        email,
+        password,
+      });
 
-    if (res.data.role === "Admin") navigate("/admin/dashboard");
-    else navigate("/employee/dashboard");
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
+
+      if (res.data.role === "Admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/employee/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data?.message) {
+        setErrorMsg(error.response.data.message);
+      } else {
+        setErrorMsg("Server error. Please try again later.");
+      }
+    }
   };
 
   return (
@@ -29,6 +42,12 @@ const Login = () => {
         className="bg-white p-10 rounded shadow w-96"
       >
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+
+        {errorMsg && (
+          <p className="text-red-600 text-sm mb-4 text-center">
+            {errorMsg}
+          </p>
+        )}
 
         <input
           className="w-full mb-4 p-3 border rounded"

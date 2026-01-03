@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 
-const Dashboard = () => {
+const EmployeeDashboard = () => {
   return (
     <div>
       <Navbar />
@@ -23,4 +23,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default EmployeeDashboard;

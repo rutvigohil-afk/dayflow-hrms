@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import API from "../../services/api";
 
-const Leave = () => {
+const EmployeeLeave = () => {
   const [type, setType] = useState("Paid Leave");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -142,4 +142,4 @@ const Leave = () => {
   );
 };
 
-export default Leave;
+export default EmployeeLeave;
