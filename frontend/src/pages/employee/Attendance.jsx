@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
+import API from "../../services/api";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 
 const Attendance = () => {
+    const [records, setRecords] = useState([]);
+    
+    useEffect(() => {
+      API.get("/attendance/my").then((res) => {
+        setRecords(res.data);
+      });
+    }, []);
+    
+    const checkIn = async () => {
+      await API.post("/attendance/checkin");
+      const res = await API.get("/attendance/my");
+      setRecords(res.data);
+    };
+
   return (
     <div>
       <Navbar />
